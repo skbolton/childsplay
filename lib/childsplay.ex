@@ -1,4 +1,4 @@
-defmodule ChildSplay do
+defmodule ChildsPlay do
   @moduledoc """
   Make building a list of children a `Supervisor` manages a problem of the
   past.
@@ -22,7 +22,7 @@ defmodule ChildSplay do
   defmodule MyApp.Application do
     use Application
     # importing not required - just cleaner
-    import ChildSplay
+    import ChildsPlay
 
     def start(_type, _args) do
       [
@@ -53,13 +53,13 @@ defmodule ChildSplay do
   true the children will be rendered.
 
   The core data structure at play here is just a list, the trick that
-  `ChildSplay` adds is that now nested lists get flattened. What this means is
+  `ChildsPlay` adds is that now nested lists get flattened. What this means is
   that we could go as far as doing this if we wanted to.
 
   ```elixir
   defmodule MyApp.Application do
     use Application
-    import ChildSplay
+    import ChildsPlay
 
     def start(_type, _args) do
       [
@@ -103,12 +103,12 @@ defmodule ChildSplay do
 
   ```elixir
   [
-    ChildSplay.given(true, Agent),
-    ChildSplay.given(false, Agent),
-    ChildSplay.given(true, [Worker1, Worker2]),
-    ChildSplay.given(fn -> false end, [Worker3, Worker4])
+    ChildsPlay.given(true, Agent),
+    ChildsPlay.given(false, Agent),
+    ChildsPlay.given(true, [Worker1, Worker2]),
+    ChildsPlay.given(fn -> false end, [Worker3, Worker4])
   ]
-  |> ChildSplay.build()
+  |> ChildsPlay.build()
   |> Supervisor.start_link(strategy: :one_for_one)
   ```
   """

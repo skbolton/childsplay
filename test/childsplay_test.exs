@@ -1,6 +1,6 @@
-defmodule ChildSplayTest do
+defmodule ChildsPlayTest do
   use ExUnit.Case
-  doctest ChildSplay
+  doctest ChildsPlay
 
   defmodule Agent1 do
     use Agent
@@ -38,7 +38,7 @@ defmodule ChildSplayTest do
                  ],
                  Agent2
                ]
-               |> ChildSplay.build()
+               |> ChildsPlay.build()
                |> Supervisor.start_link(strategy: :one_for_one)
 
       assert %{workers: 2} = Supervisor.count_children(pid)
@@ -49,12 +49,12 @@ defmodule ChildSplayTest do
     test "being passed booleans" do
       {:ok, pid} =
         [
-          ChildSplay.given(true, Agent1),
-          ChildSplay.given(false, Agent2),
+          ChildsPlay.given(true, Agent1),
+          ChildsPlay.given(false, Agent2),
           # TODO: Should I do this or does this cause issues with other API'S
-          ChildSplay.given(nil, Agent3)
+          ChildsPlay.given(nil, Agent3)
         ]
-        |> ChildSplay.build()
+        |> ChildsPlay.build()
         |> Supervisor.start_link(strategy: :rest_for_one)
 
       assert %{workers: 1} = Supervisor.count_children(pid)
@@ -63,11 +63,11 @@ defmodule ChildSplayTest do
     test "passing a predicate function" do
       {:ok, pid} =
         [
-          ChildSplay.given(fn -> true end, Agent1),
-          ChildSplay.given(fn -> false end, Agent2),
-          ChildSplay.given(fn -> nil end, Agent3)
+          ChildsPlay.given(fn -> true end, Agent1),
+          ChildsPlay.given(fn -> false end, Agent2),
+          ChildsPlay.given(fn -> nil end, Agent3)
         ]
-        |> ChildSplay.build()
+        |> ChildsPlay.build()
         |> Supervisor.start_link(strategy: :rest_for_one)
 
       assert %{workers: 1} = Supervisor.count_children(pid)
@@ -76,9 +76,9 @@ defmodule ChildSplayTest do
     test "can be passed a list of children for condition" do
       {:ok, pid} =
         [
-          ChildSplay.given(true, [Agent1, Agent2, Agent3])
+          ChildsPlay.given(true, [Agent1, Agent2, Agent3])
         ]
-        |> ChildSplay.build()
+        |> ChildsPlay.build()
         |> Supervisor.start_link(strategy: :rest_for_one)
 
       assert %{workers: 3} = Supervisor.count_children(pid)
@@ -88,19 +88,19 @@ defmodule ChildSplayTest do
     test "recursion works" do
       {:ok, pid} =
         [
-          ChildSplay.given(
+          ChildsPlay.given(
             true,
             [
               Agent1,
               Agent2,
-              ChildSplay.given(
+              ChildsPlay.given(
                 true,
                 Agent3
               )
             ]
           )
         ]
-        |> ChildSplay.build()
+        |> ChildsPlay.build()
         |> Supervisor.start_link(strategy: :rest_for_one)
 
       assert %{workers: 3} = Supervisor.count_children(pid)

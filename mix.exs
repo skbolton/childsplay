@@ -13,7 +13,7 @@ defmodule Childsplay.MixProject do
       # Hex
       description: "Helpers for building a Supervisor's children",
       package: package(),
-      name: "ChildSplay",
+      name: "ChildsPlay",
       docs: docs(),
       start_permanent: Mix.env() == :prod,
       deps: deps()
@@ -31,7 +31,7 @@ defmodule Childsplay.MixProject do
 
   defp docs() do
     [
-      main: "ChildSplay",
+      main: "ChildsPlay",
       source_ref: "v#{@version}",
       source_url: @source_url
     ]
