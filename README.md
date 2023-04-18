@@ -1,6 +1,7 @@
-# Childsplay
+# ChildSplay
 
-**TODO: Add description**
+Make building a list of children a `Supervisor` manages a problem of the
+past.
 
 ## Installation
 
