@@ -16,7 +16,7 @@ defmodule ChildSplay do
 
   This leads to all sorts of variations on how to filter and tranform the list
   of children for our Supervisors. Most lead to bloated descriptions and
-  confusing logic.
+  confusing logic. We can turn it into childs play....
 
   ```elixir
   defmodule MyApp.Application do
