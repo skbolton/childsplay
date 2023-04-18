@@ -13,6 +13,8 @@ defmodule Childsplay.MixProject do
       # Hex
       description: "Helpers for building a Supervisor's children",
       package: package(),
+      name: "ChildSplay",
+      docs: docs(),
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
@@ -24,6 +26,14 @@ defmodule Childsplay.MixProject do
       licenses: ["MIT"],
       links: %{"GitHub" => @source_url},
       files: ~w(.formatter.exs mix.exs README.md lib)
+    ]
+  end
+
+  defp docs() do
+    [
+      main: "ChildSplay",
+      source_ref: "v#{@version}",
+      source_url: @source_url
     ]
   end
 
