@@ -20,6 +20,7 @@ defmodule ChildSplay do
 
   ```elixir
   defmodule MyApp.Application do
+    # importing not required - just cleaner
     import ChildSplay
     def start(_type, _args) do
       [
