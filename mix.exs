@@ -1,4 +1,4 @@
-defmodule Childsplay.MixProject do
+defmodule ChildsPlay.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/skbolton/childsplay"
