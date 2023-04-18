@@ -20,8 +20,10 @@ defmodule ChildSplay do
 
   ```elixir
   defmodule MyApp.Application do
+    use Application
     # importing not required - just cleaner
     import ChildSplay
+
     def start(_type, _args) do
       [
         # Add regular children you know and love (possibly more than the others)
@@ -56,7 +58,9 @@ defmodule ChildSplay do
 
   ```elixir
   defmodule MyApp.Application do
+    use Application
     import ChildSplay
+
     def start(_type, _args) do
       [
         given(
