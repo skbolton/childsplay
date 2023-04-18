@@ -41,7 +41,7 @@ defmodule ChildSplay do
         ),
       ]
       |> build()
-      |> Supervised.start_link(strategy: :one_for_one)
+      |> Supervisor.start_link(strategy: :one_for_one)
     end
   end
   ```
@@ -78,7 +78,7 @@ defmodule ChildSplay do
         ),
       ]
       |> build()
-      |> Supervised.start_link(strategy: :one_for_one)
+      |> Supervisor.start_link(strategy: :one_for_one)
     end
   end
   ```
